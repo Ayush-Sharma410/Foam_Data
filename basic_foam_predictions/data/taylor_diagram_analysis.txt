@@ -1,0 +1,70 @@
+TAYLOR DIAGRAM ANALYSIS REPORT (BASIC FEATURES)
+============================================
+
+Reference Standard Deviation: 0.4435
+
+Model Statistics:
+-----------------
+
+RandomForest (RFR):
+  Standard Deviation: 0.4597  (Ratio to Reference: 1.0366)
+  Correlation Coefficient: 0.9365
+  RMSE: 0.1621
+
+GradientBoosting (GBR):
+  Standard Deviation: 0.3865  (Ratio to Reference: 0.8717)
+  Correlation Coefficient: 0.9334
+  RMSE: 0.1616
+
+XGBoost (XGB):
+  Standard Deviation: 0.3673  (Ratio to Reference: 0.8283)
+  Correlation Coefficient: 0.9319
+  RMSE: 0.1676
+
+ensemble (ENS):
+  Standard Deviation: 0.4336  (Ratio to Reference: 0.9777)
+  Correlation Coefficient: 0.9287
+  RMSE: 0.1734
+
+Lasso (Lasso):
+  Standard Deviation: 0.4269  (Ratio to Reference: 0.9627)
+  Correlation Coefficient: 0.9283
+  RMSE: 0.1730
+
+Ridge (Ridge):
+  Standard Deviation: 0.4398  (Ratio to Reference: 0.9918)
+  Correlation Coefficient: 0.9263
+  RMSE: 0.1757
+
+SVR (SVR):
+  Standard Deviation: 0.4373  (Ratio to Reference: 0.9861)
+  Correlation Coefficient: 0.9247
+  RMSE: 0.1800
+
+ElasticNet (ENR):
+  Standard Deviation: 0.3695  (Ratio to Reference: 0.8333)
+  Correlation Coefficient: 0.9245
+  RMSE: 0.1789
+
+OVERALL ASSESSMENT
+=================
+
+Best performing model (using only basic features): RandomForest (RFR)
+Best correlation achieved: 0.9365
+
+Interpretation Guidelines:
+------------------------
+1. Correlation Coefficient:
+   > 0.9: Excellent
+   0.7-0.9: Good
+   0.5-0.7: Moderate
+   < 0.5: Poor
+
+2. Standard Deviation Ratio:
+   Close to 1.0 is ideal
+   < 1.0: Model underpredicts variability
+   > 1.0: Model overpredicts variability
+
+3. RMSE:
+   Smaller values indicate better predictions
+   Should be interpreted relative to the scale of your data

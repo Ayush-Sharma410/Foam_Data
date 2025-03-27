@@ -1,0 +1,33 @@
+# FOAM DATA PREDICTION MODEL - SUMMARY INSIGHTS
+
+Report generated on: 2025-03-27 14:10:59
+
+## DATA OVERVIEW
+Total observations: 81
+Target variable range: 0.23 to 2.50
+
+## MODEL PERFORMANCE
+Best individual model: Ridge (R² = 0.7449)
+Ensemble model R²: 0.8471
+Ensemble model RMSE: 0.1734
+
+## FEATURE IMPORTANCE
+1. Passes: 0.7080
+7. Composition_C: 0.1658
+5. Composition_A: 0.0537
+2. Techniques_Buired: 0.0211
+4. Techniques_Sandwich: 0.0185
+3. Techniques_Groove: 0.0169
+6. Composition_B: 0.0160
+
+## TOP MOST SENSITIVE FEATURES
+1. Passes: 0.6001
+5. Composition_A: 0.0037
+3. Techniques_Groove: 0.0005
+
+## KEY INSIGHTS
+- Using only the basic features (without engineering new features)
+- The most influential feature is 'Passes', suggesting this has the greatest impact on foam properties.
+
+## CONCLUSION
+Using only basic features, the model shows good predictive performance.

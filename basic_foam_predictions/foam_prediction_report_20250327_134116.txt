@@ -1,0 +1,148 @@
+Loading data...
+
+Data Overview:
+Shape: (81, 4)
+
+Data Types:
+Techniques      object
+Composition     object
+Passes           int64
+R1             float64
+dtype: object
+
+Summary Statistics:
+          Passes         R1
+count  81.000000  81.000000
+mean    2.333333   1.459630
+std     1.254990   0.587585
+min     1.000000   0.230000
+25%     1.000000   1.090000
+50%     2.000000   1.500000
+75%     4.000000   1.890000
+max     4.000000   2.500000
+
+First few rows:
+  Techniques Composition  Passes    R1
+0     Buired           A       1  1.43
+1     Buired           A       2  0.90
+2     Buired           A       4  0.32
+3     Buired           A       1  1.76
+4     Buired           A       2  0.99
+
+Processing features (one-hot encoding only)...
+
+Analyzing feature correlations...
+
+Feature correlation with target variable (R1):
+R1        1.000000
+Passes    0.748393
+Name: R1, dtype: float64
+
+Preparing data for modeling...
+Training set size: (64, 7)
+Test set size: (17, 7)
+
+Training multiple models with hyperparameter tuning...
+
+Training Ridge...
+  Best parameters: {'alpha': 1.0, 'max_iter': 1000, 'solver': 'sparse_cg', 'tol': 0.0001}
+  Test R2: 0.8430
+  CV R2: 0.7449
+  RMSE: 0.1757
+  MAE: 0.1420
+
+Training Lasso...
+  Best parameters: {'alpha': 0.01, 'max_iter': 1000, 'tol': 0.0001}
+  Test R2: 0.8478
+  CV R2: 0.7445
+  RMSE: 0.1730
+  MAE: 0.1416
+
+Training ElasticNet...
+  Best parameters: {'alpha': 0.1, 'l1_ratio': 0.1, 'max_iter': 1000, 'tol': 1e-05}
+  Test R2: 0.8373
+  CV R2: 0.7249
+  RMSE: 0.1789
+  MAE: 0.1430
+
+Training SVR...
+  Best parameters: {'C': 100.0, 'epsilon': 0.1, 'gamma': 'scale', 'kernel': 'linear'}
+  Test R2: 0.8353
+  CV R2: 0.7433
+  RMSE: 0.1800
+  MAE: 0.1527
+
+Training RandomForest...
+  Best parameters: {'max_depth': None, 'min_samples_split': 5, 'n_estimators': 200}
+  Test R2: 0.8711
+  CV R2: 0.6513
+  RMSE: 0.1592
+  MAE: 0.1223
+
+Training GradientBoosting...
+  Best parameters: {'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 200, 'subsample': 0.8}
+  Test R2: 0.8748
+  CV R2: 0.6210
+  RMSE: 0.1569
+  MAE: 0.1277
+
+Training XGBoost...
+  Best parameters: {'colsample_bytree': 1.0, 'learning_rate': 0.01, 'max_depth': 3, 'n_estimators': 200, 'subsample': 0.8}
+  Test R2: 0.8571
+  CV R2: 0.6346
+  RMSE: 0.1676
+  MAE: 0.1435
+
+Model Comparison:
+              Model   Test R2     CV R2      RMSE       MAE
+0             Ridge  0.842990  0.744901  0.175715  0.141986
+1             Lasso  0.847762  0.744484  0.173024  0.141621
+3               SVR  0.835278  0.743340  0.179979  0.152727
+2        ElasticNet  0.837308  0.724882  0.178866  0.143012
+4      RandomForest  0.871060  0.651272  0.159235  0.122297
+6           XGBoost  0.857139  0.634567  0.167611  0.143458
+5  GradientBoosting  0.874840  0.621047  0.156884  0.127706
+Model comparison chart saved to basic_foam_predictions\visualizations/model_comparison_chart.png
+
+Creating ensemble model from top 3 models...
+Top models selected for ensemble: ['Ridge' 'Lasso' 'SVR']
+
+Ensemble Model Performance:
+  Test R2: 0.8471
+  RMSE: 0.1734
+  MAE: 0.1453
+Ensemble model predictions saved to basic_foam_predictions\visualizations/ensemble_predictions.png
+
+Analyzing feature importance...
+
+Feature Importance from RandomForest:
+               Feature  Importance
+0               Passes    0.696379
+6        Composition_C    0.180403
+4        Composition_A    0.054588
+1    Techniques_Buired    0.019416
+3  Techniques_Sandwich    0.019154
+5        Composition_B    0.015339
+2    Techniques_Groove    0.014720
+Feature importance plot saved to basic_foam_predictions\visualizations/feature_importance.png
+
+Performing sensitivity analysis using feature removal method...
+
+Baseline R² (all features): 0.8471
+
+Sensitivity Analysis Results (all features):
+               Feature  R2_without_feature  Sensitivity  Relative_Importance
+0               Passes            0.247035     0.600092            70.838459
+4        Composition_A            0.843410     0.003717             0.438751
+2    Techniques_Groove            0.846636     0.000491             0.057982
+5        Composition_B            0.847331    -0.000204            -0.024054
+1    Techniques_Buired            0.848016    -0.000890            -0.105007
+6        Composition_C            0.849760    -0.002633            -0.310834
+3  Techniques_Sandwich            0.851510    -0.004383            -0.517400
+Sensitivity analysis plot saved to basic_foam_predictions\visualizations/sensitivity_analysis.png
+
+Best model saved as basic_foam_predictions\data/best_foam_model.joblib
+
+Summary insights saved to basic_foam_predictions\data/summary_insights.txt
+
+--- Analysis Complete ---
